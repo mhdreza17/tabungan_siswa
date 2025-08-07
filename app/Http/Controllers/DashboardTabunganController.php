@@ -120,7 +120,6 @@ class DashboardTabunganController extends Controller
 
     public function cetakpdf($id)
     {
-        // $nis = auth()->user()->id;
         $datas = User::where('id', $id)->get();
         $setoran = Tabungan::where('id_user', $id)->get();
         return view('dashboard.tabungan.cetakpdf',[

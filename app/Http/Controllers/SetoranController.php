@@ -73,8 +73,7 @@ class SetoranController extends Controller
     public function profil()
     {
         $nis = auth()->user()->id;
-        // $user = User::where('id', $id)->get();
-        // return view('profilsiswa.index',['user'=>$user]);
+   
         $userr = DB::table('users')->where('id', $nis)->get();
         return view('dashboard.profilsiswa.index',['userr'=>$userr]);
     }

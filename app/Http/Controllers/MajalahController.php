@@ -12,7 +12,6 @@ class MajalahController extends Controller
     public function index()
     {
         $posts = Post::take(4)->get();
-        // dd($post[0]->image);
         $categories = Category::take(4)->get();
         $catrandom = Category::inRandomOrder()->take(2)->get();
         $populer = Post::orderBy('view', 'desc')->get();
