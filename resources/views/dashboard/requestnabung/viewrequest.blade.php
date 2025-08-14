@@ -96,12 +96,21 @@
                                 <thead>
                                     <th> Tanggal</th>
                                     <th> Jumlah</th>
+                                    <th> Bukti Transfer </th>
                                 </thead>
                                 @foreach ($reqnabung as $ds)
                                      @if($ds->status==='request')
                                     <tbody>
                                         <td>{{$ds->created_at}}</td>
                                         <td>{{$ds->jlh_request}}</td>
+                                        <td>
+                                          @if($ds->image)
+                                            <img src="{{ asset('storage/' . ltrim($ds->image, '/')) }}" alt="Bukti Transfer" style="max-width:80px; max-height:80px;">
+                                            <a href="{{ asset('storage/' . ltrim($ds->image, '/')) }}" download class="btn btn-info mt-2">Download</a>
+                                          @else
+                                            -
+                                          @endif
+                                        </td>
                                     </tbody>
                                     @endif
                                 @endforeach

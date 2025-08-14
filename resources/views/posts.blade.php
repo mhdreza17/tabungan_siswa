@@ -37,7 +37,8 @@
           <div class="col-lg-4 mb-5">
             <a href="">
               @if ($post->image)
-              <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid mb-4">
+          
+<img src="{{ asset('storage/' . $post->image) }}" alt="Bukti Transfer" class="img-fluid mb-4">
               @else
               <img class="img-fluid mb-4" src="https://source.unsplash.com/640x480?{{ $post->category->name }}" alt=""/>
               @endif

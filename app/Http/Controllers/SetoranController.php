@@ -52,13 +52,14 @@ class SetoranController extends Controller
     {
 
         $validatedData = $request->validate([
-            'image' => 'mimes:png,jpg,jpeg|max:5120kb'
+           'image' => 'mimes:png,jpg,jpeg|max:5120'
         ]);
 
         if($request->hasFile('image')){
             $fileName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('bukti_tf',   $fileName, 'public');
-            $validatedData['image'] = '/storage/' . $path;
+            $path = $request->file('image')->storeAs('bukti_tf', $fileName, 'public');
+            // Simpan hanya path relatif ke storage, tanpa awalan /storage
+            $validatedData['image'] = $path;
         }
 
         Request_nabung::create([
@@ -82,7 +83,7 @@ class SetoranController extends Controller
     {
         $nis = auth()->user()->id;
         $datas = User::where('id', $nis)->get();
-        $setoran = DB::table('tabungans')->where('id_user', $nis)->get();
+$setoran = DB::table('tabungans')->where('id_user', $nis)->get();
         return view('dashboard.profilsiswa.setoranpdf',[
             'setoran'=>$setoran,
             'datas'=>$datas
